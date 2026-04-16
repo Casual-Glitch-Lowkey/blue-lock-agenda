@@ -5,74 +5,133 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blue Lock Propaganda</title>
 <style>
+/* ===== GLOBAL ===== */
 body {
     margin: 0;
     font-family: 'Arial Black', sans-serif;
-    background: black;
+    background: radial-gradient(circle at top, #0a0f1f, #000000 70%);
     color: white;
     text-align: center;
+    overflow-x: hidden;
 }
 
 section {
-    padding: 80px 20px;
+    padding: 100px 20px;
+    position: relative;
 }
 
 h1, h2 {
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 }
 
+/* ===== SUBTLE SCANLINE EFFECT ===== */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 2px,
+        rgba(255,255,255,0.02) 3px
+    );
+    pointer-events: none;
+}
+
+/* ===== INTRO ===== */
 .intro {
     font-size: 2rem;
+    line-height: 1.6;
+    text-shadow: 0 0 10px rgba(0,255,255,0.5);
 }
 
 .arrow {
     font-size: 3rem;
     margin: 20px 0;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
 .pfp {
-    width: 250px;
+    width: 260px;
     border: 3px solid cyan;
     border-radius: 20px;
-    box-shadow: 0 0 20px cyan;
+    box-shadow: 0 0 25px cyan, 0 0 60px rgba(0,255,255,0.4);
+    transition: transform 0.3s ease;
 }
 
+.pfp:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+/* ===== TEXT BLOCK ===== */
 .block {
     max-width: 800px;
     margin: auto;
-    line-height: 1.8;
+    line-height: 1.9;
     font-size: 1.2rem;
 }
 
 .highlight {
-    color: cyan;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
 }
 
 .reason {
-    font-size: 2rem;
+    font-size: 2.2rem;
     margin-top: 40px;
     color: hotpink;
+    text-shadow: 0 0 15px hotpink;
 }
 
+/* ===== IMAGES ===== */
 img {
     max-width: 90%;
     margin: 20px 0;
-    border-radius: 10px;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* ===== DIVIDER ===== */
 .divider {
-    margin: 60px auto;
+    margin: 80px auto;
     width: 60%;
     height: 2px;
-    background: cyan;
+    background: linear-gradient(90deg, transparent, cyan, transparent);
+    box-shadow: 0 0 10px cyan;
+}
+
+/* ===== FADE IN ANIMATION ===== */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 </style>
 </head>
 <body>
 
-<section>
+<section class="fade">
     <div class="intro">
         hello, i see you are bitch made and havent watched blue lock
         <br><br>
@@ -88,7 +147,7 @@ img {
 
 <div class="divider"></div>
 
-<section class="block">
+<section class="block fade">
     <p>Blue Lock isn’t a soccer manga with gay scenes occasionally.</p>
 
     <p>It’s a psychological anime delving into what someone is willing to risk to become the best out of a wide group.</p>
@@ -106,7 +165,7 @@ img {
 
 <div class="divider"></div>
 
-<section class="block">
+<section class="block fade">
     <p>Before the next part—</p>
 
     <p>you (yes, you reading this)</p>
@@ -124,7 +183,7 @@ img {
 
 <div class="divider"></div>
 
-<section>
+<section class="fade">
     <h2>Now, my little diamonds in the rough—</h2>
     <h1>Reasons to watch Blue Lock</h1>
 
@@ -154,7 +213,7 @@ img {
 
 <div class="divider"></div>
 
-<section>
+<section class="fade">
     <h2>Listen Up.</h2>
     <img src="isagi-barou.png">
 </section>
